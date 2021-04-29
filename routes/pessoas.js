@@ -1,7 +1,7 @@
-const pessoas = (req, res) => {
-  res.send('pessoas')
-}
+const express = require('express')
+const router = express.Router()
+const pessoasController = require('../controllers/pessoas')
 
-module.exports = {
-  pessoas
-}
+router.get('/', pessoasController.index)
+
+module.exports = router

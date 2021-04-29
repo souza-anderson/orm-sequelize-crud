@@ -1,7 +1,7 @@
-const express = require('express')
-const router = express.Router()
-const indexRoute = require('../routes/pessoas')
+const index = (req, res) => {
+  res.send('pessoas')
+}
 
-router.get('/', indexRoute.pessoas)
-
-module.exports = router
+module.exports = {
+  index
+}
