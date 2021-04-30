@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const pessoas = require('./routes/pessoas')
+const model = require('./models/index')
 const app = express()
 const port = process.env.PORT || 3000
 
