@@ -1,7 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize')
 const fs = require('fs')
 const path = require('path')
-const Pessoa = require('./pessoa')
 
 const sequelize = new Sequelize('cadastro-orm', 'root', '', {
   dialect: 'mysql',
@@ -15,6 +14,12 @@ fs
   .forEach(file => {
     const model = require(path.join(__dirname, file))(sequelize, DataTypes)
     models[model.name] = model
+  })
+
+  Object.keys(models).forEach(modelName => {   
+    if ('associate' in models[modelName]) {      
+      models[modelName].associate(models)
+    }
   })
 
 // const pessoa = Pessoa(sequelize, DataTypes)
